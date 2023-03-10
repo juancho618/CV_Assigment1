@@ -1,7 +1,8 @@
 import cv2 as cv
+videos_path = './../../videos'
 
 # Load the video
-cap = cv.VideoCapture('video2.mp4')
+cap = cv.VideoCapture(f'{videos_path}/video2.mp4')
 
 # Create a window to display the video
 cv.namedWindow('Video')

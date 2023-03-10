@@ -1,17 +1,18 @@
-
 import cv2 as cv
-video = cv.VideoCapture('vid.mp4')
+video = cv.VideoCapture(0)
+# Frames in Gray
+# count frames
 
-total_frames = int(video.get(cv.CAP_PROP_FRAME_COUNT))
-print(total_frames)
-half_frames = total_frames // 2
 current_frame = 0
+is_gray = False
 while True:
     ret, frame = video.read()
     if ret:
-        if current_frame < half_frames:    
-            frame_gaussian = cv.bilateralFilter(frame,15,75,75)              
-            cv.imshow('frame', frame_gaussian)
+        if current_frame % 100 == 0:
+            is_gray = not is_gray
+        if is_gray == True:      
+            gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+            cv.imshow('frame', gray)
         else:
             cv.imshow('frame', frame)
         if cv.waitKey(1) == ord('q'):

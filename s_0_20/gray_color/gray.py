@@ -1,6 +1,7 @@
 
 import cv2 as cv
-video = cv.VideoCapture('vid.mp4')
+videos_path = './../../videos'
+video = cv.VideoCapture(f'{videos_path}/vid.mp4')
 
 while True:
     ret, frame = video.read()
@@ -10,6 +11,6 @@ while True:
         if cv.waitKey(1) == ord('q'):
             break
     else:
-        video = cv.VideoCapture('vid.mp4')
+        video = cv.VideoCapture(f'{videos_path}/vid.mp4')
 cv.destroyAllWindows()
 video.release()
